@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Nocturne" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/nocturne_bg</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:colorBackground">@color/nocturne_bg</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+    </style>
+    <color name="nocturne_bg">#161826</color>
+</resources>
