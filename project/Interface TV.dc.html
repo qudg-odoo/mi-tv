@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/nocturne-8228faf7-094c-4a5f-ab7a-dbdf9e739423/styles.css">
+<script src="_ds/nocturne-8228faf7-094c-4a5f-ab7a-dbdf9e739423/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>body{margin:0;background:var(--color-bg);font-family:var(--font-body);color:var(--color-text)}a{color:var(--color-accent-300)}a:hover{color:var(--color-accent-200)}.dv-turn{padding:40px 44px 32px;scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:var(--color-accent-800);color:var(--color-accent-100);border-radius:4px;text-decoration:none}.dv-tname{font:500 14px/1.2 var(--font-body);color:var(--color-text)}.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:var(--color-neutral-800);color:var(--color-neutral-100);border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.4 var(--font-body);color:var(--color-neutral-400);max-width:720px}.dv-olabel b{color:var(--color-text);font-weight:500}.dv-card{max-width:100%;border:1px solid var(--color-neutral-800);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}.dv-opt:target .dv-oid{background:var(--color-accent);color:var(--color-bg)}.dv-next{margin:26px 0 0;font:12px/1.5 var(--font-body);color:var(--color-neutral-500)}@keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,-1%)}}</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Fond dynamique — d'après <a class="dv-oid" href="#2b">2b</a></span></div>
+<div class="dv-opts">
+<div class="dv-opt" id="3a">
+<div class="dv-olabel" style="align-items:center;max-width:960px;justify-content:space-between;width:960px"><span style="display:flex;gap:8px;align-items:baseline"><a class="dv-oid" href="#3a">3a</a><span><b>Prototype interactif.</b> Les photos de la TV défilent (fondu + zoom lent). Survol ou ◀ ▶ sur une app → son visuel prend le fond. Clic ou OK → la tuile s’agrandit en plein écran.</span></span><button class="btn btn-secondary" onClick="{{ toggleEdit }}" style="flex:none">{{ editLabel }}</button></div>
+<div class="dv-card" style="width:960px;height:540px;position:relative;background:var(--color-bg)">
+<sc-for list="{{ layers }}" as="item" hint-placeholder-count="0">
+<div style="position:absolute;left:{{ item.left }};top:{{ item.top }};width:{{ item.w }};height:{{ item.h }};opacity:{{ item.o }};pointer-events:{{ item.pe }};border-radius:{{ item.r }};overflow:hidden;transition:opacity 1.4s ease,left .5s ease,top .5s ease,width .5s ease,height .5s ease">
+<div class="lighten" style="position:absolute;inset:0;animation:{{ item.anim }}"><image-slot id="{{ item.id }}" shape="rect" placeholder="{{ item.ph }}"></image-slot></div>
+<sc-if value="{{ item.isApp }}" hint-placeholder-val="{{ false }}"><video data-tv-anim="{{ item.vi }}" src="{{ item.vsrc }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" onError="{{ item.verr }}" onLoadedData="{{ item.vok }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:{{ item.vd }}"></video></sc-if>
+<span style="position:absolute;left:8px;top:8px;padding:2px 8px;border-radius:var(--radius-sm);background:var(--color-surface);font-size:11px;color:var(--color-neutral-200);opacity:{{ item.lo }};pointer-events:none">{{ item.label }}</span>
+</div>
+</sc-for>
+<div style="position:absolute;inset:0;opacity:{{ uiOp }};pointer-events:{{ uiPe }};filter:{{ uiFilter }};transform:{{ uiScale }};transition:opacity .4s,filter .6s ease,transform .6s ease">
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,color-mix(in oklch,var(--color-bg) 85%,transparent) 0%,transparent 55%),linear-gradient(0deg,color-mix(in oklch,var(--color-bg) 90%,transparent) 0%,transparent 45%)"></div>
+<div style="position:absolute;left:56px;top:110px;display:flex;flex-direction:column;gap:8px;pointer-events:none">
+<span style="font-size:96px;font-weight:300;letter-spacing:-0.04em;line-height:0.9">20:41</span>
+<span style="font-size:18px;color:var(--color-neutral-300)">Jeudi 22 octobre</span>
+<div style="display:flex;align-items:center;gap:22px;margin-top:18px;padding:14px 18px;border-radius:var(--radius-lg);background:color-mix(in oklch,var(--color-surface) 70%,transparent);backdrop-filter:blur(16px);border:1px solid var(--color-neutral-800);box-shadow:var(--shadow-md)">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-cloud-sun" style="font-size:36px;color:var(--color-accent-300)"></i><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:28px;line-height:1">14°</span><span style="font-size:11px;color:var(--color-neutral-400)">Bruxelles · 9° / 15°</span></div></div>
+<div style="width:1px;height:38px;background:var(--color-neutral-800)"></div>
+<div style="display:flex;gap:18px;font-size:11px;color:var(--color-neutral-400)"><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Ven<i class="ph ph-cloud-rain" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">12°</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Sam<i class="ph ph-cloud" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">13°</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Dim<i class="ph ph-sun" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">16°</span></div></div>
+</div>
+</div>
+<div style="position:absolute;right:56px;top:40px;display:flex;gap:6px;pointer-events:none">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><span style="height:4px;width:{{ d.w }};border-radius:2px;background:{{ d.c }};transition:width .4s"></span></sc-for>
+</div>
+<div onMouseLeave="{{ clearFocus }}" style="position:absolute;left:56px;bottom:40px;display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);background:color-mix(in oklch,var(--color-surface) 70%,transparent);backdrop-filter:blur(16px);border:1px solid var(--color-neutral-800);box-shadow:var(--shadow-lg)">
+<sc-for list="{{ tiles }}" as="t" hint-placeholder-count="4">
+<div onMouseEnter="{{ t.enter }}" onClick="{{ t.open }}" style="width:128px;height:72px;border-radius:var(--radius-md);background:{{ t.bg }};color:{{ t.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 16px var(--font-body);letter-spacing:-0.03em;cursor:pointer;transform:{{ t.scale }};box-shadow:{{ t.ring }};transition:transform .18s ease,box-shadow .18s ease"><span style="font-size:8px;letter-spacing:0.18em;opacity:.7;font-weight:500">{{ t.kicker }}</span>{{ t.label }}</div>
+</sc-for>
+<div style="width:1px;height:44px;background:var(--color-neutral-700);margin:0 4px"></div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-squares-four" style="font-size:24px"></i>Apps</div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-plugs" style="font-size:24px"></i>Sources</div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-gear-six" style="font-size:24px"></i>Réglages</div>
+</div>
+<span style="position:absolute;right:56px;bottom:20px;font-size:11px;color:var(--color-neutral-500);pointer-events:none">◀ ▶ choisir · OK lancer · Échap retour</span>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;opacity:{{ lOp }};transition:opacity .5s ease">
+<div style="position:absolute;left:{{ lL }};top:{{ lT }};width:{{ lW }};height:{{ lH }};border-radius:{{ lR }};background:{{ lBg }};color:{{ lFg }};display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);transition:{{ lTr }}">
+<div style="display:flex;flex-direction:column;align-items:center;font:600 16px var(--font-body);letter-spacing:-0.03em;transform:{{ lScale }};transition:{{ lTr }}"><span style="font-size:8px;letter-spacing:0.18em;opacity:.7;font-weight:500">{{ lKicker }}</span>{{ lLabel }}</div>
+</div>
+</div>
+<sc-if value="{{ edit }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:40px;top:20px;font-size:13px;color:var(--color-neutral-300)">Ligne 1 : photos d'origine de la TV · Ligne 2 : animation de chaque app (vidéo chargée depuis anim/, sinon image ou GIF)</span></sc-if>
+</div>
+</div>
+</div>
+<p class="dv-next">Essayez : « mets aussi Disney+ et Netflix dans le dock » · « change la durée du diaporama » · « ajoute un écran de veille »</p>
+</section>
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Rendu réaliste — d'après <a class="dv-oid" href="#1a">1a</a>, <a class="dv-oid" href="#1b">1b</a>, <a class="dv-oid" href="#1d">1d</a> (survolez les tuiles pour voir le focus)</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a><span><b>Rangée unique</b> (<a class="dv-oid" href="#1a">1a</a>). Nom de l'app sélectionnée en grand, tuiles 16:9 aux couleurs des services.</span></div>
+<div class="dv-card" style="width:960px;height:540px;position:relative;background:radial-gradient(90% 80% at 15% 0%, var(--color-neutral-900), var(--color-bg) 65%)">
+<div style="position:absolute;top:32px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;gap:20px"><span style="font-size:22px;font-weight:500;letter-spacing:-0.01em">20:41</span><div style="display:flex;align-items:center;gap:10px;padding:6px 14px 6px 10px;border-radius:999px;background:color-mix(in oklch,var(--color-surface) 80%,transparent);border:1px solid var(--color-neutral-800);box-shadow:var(--shadow-sm)"><i class="ph ph-cloud-sun" style="font-size:22px;color:var(--color-accent-300)"></i><span style="font-size:16px">14°</span><span style="font-size:13px;color:var(--color-neutral-400)">Bruxelles · averses vers 17h</span></div></div>
+<div style="display:flex;gap:8px"><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-magnifying-glass"></i></div><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-plugs"></i></div><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-gear-six"></i></div></div>
+</div>
+<div style="position:absolute;left:56px;top:190px;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-500)">Favoris</span><span style="font-size:44px;font-weight:500;letter-spacing:-0.02em;line-height:1">YouTube</span></div>
+<div style="position:absolute;left:56px;right:56px;top:300px;display:flex;gap:20px;align-items:center">
+<div style="width:176px;height:99px;border-radius:var(--radius-md);background:#FF0033;display:flex;align-items:center;justify-content:center;gap:8px;font:600 22px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);transform:scale(1.08);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200),0 18px 40px rgba(0,0,0,.55),0 0 40px color-mix(in oklch,var(--color-accent) 40%,transparent)"><i class="ph ph-youtube-logo" style="font-size:30px"></i>YouTube</div>
+<div style="width:176px;height:99px;border-radius:var(--radius-md);background:linear-gradient(135deg,#0c1033,#23145a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;color:var(--color-neutral-100);box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200),0 18px 40px rgba(0,0,0,.55)"><span style="font-size:10px;letter-spacing:0.18em;opacity:.7">RTBF</span><span style="font:600 26px var(--font-body);letter-spacing:-0.03em">auvio</span></div>
+<div style="width:176px;height:99px;border-radius:var(--radius-md);background:#F47521;display:flex;align-items:center;justify-content:center;font:600 21px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200),0 18px 40px rgba(0,0,0,.55)">crunchyroll</div>
+<div style="width:176px;height:99px;border-radius:var(--radius-md);background:#0F171E;border:1px solid #1c2a36;display:flex;align-items:center;justify-content:center;font:600 22px var(--font-body);letter-spacing:-0.03em;color:#1A98FF;box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200),0 18px 40px rgba(0,0,0,.55)">prime video</div>
+<div style="width:99px;height:99px;border-radius:var(--radius-md);border:1px solid var(--color-neutral-800);background:color-mix(in oklch,var(--color-surface) 60%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--color-neutral-400);transition:transform .15s" style-hover="transform:scale(1.08);color:var(--color-text);border-color:var(--color-accent)"><i class="ph ph-squares-four" style="font-size:26px"></i>Toutes</div>
+</div>
+<div style="position:absolute;left:56px;right:56px;bottom:30px;display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-600)"><span>OK Ouvrir · ≡ Options</span><span style="display:flex;align-items:center;gap:6px"><i class="ph ph-wifi-high"></i>Connecté</span></div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a><span><b>Mode ambiance + dock</b> (<a class="dv-oid" href="#1b">1b</a>). Glissez une photo dans le fond (de préférence sombre).</span></div>
+<div class="dv-card" style="width:960px;height:540px;position:relative;background:var(--color-bg)">
+<div class="lighten" style="position:absolute;inset:0"><image-slot id="tv-wallpaper" shape="rect" placeholder="Fond d'écran — glissez une photo"></image-slot></div>
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,color-mix(in oklch,var(--color-bg) 85%,transparent) 0%,transparent 55%),linear-gradient(0deg,color-mix(in oklch,var(--color-bg) 90%,transparent) 0%,transparent 45%)"></div>
+<div style="position:absolute;left:56px;top:110px;display:flex;flex-direction:column;gap:8px;pointer-events:none">
+<span style="font-size:96px;font-weight:300;letter-spacing:-0.04em;line-height:0.9">20:41</span>
+<span style="font-size:18px;color:var(--color-neutral-300)">Jeudi 22 octobre</span>
+<div style="display:flex;align-items:center;gap:22px;margin-top:18px;padding:14px 18px;border-radius:var(--radius-lg);background:color-mix(in oklch,var(--color-surface) 70%,transparent);backdrop-filter:blur(16px);border:1px solid var(--color-neutral-800);box-shadow:var(--shadow-md)">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-cloud-sun" style="font-size:36px;color:var(--color-accent-300)"></i><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:28px;line-height:1">14°</span><span style="font-size:11px;color:var(--color-neutral-400)">Bruxelles · 9° / 15°</span></div></div>
+<div style="width:1px;height:38px;background:var(--color-neutral-800)"></div>
+<div style="display:flex;gap:18px;font-size:11px;color:var(--color-neutral-400)"><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Ven<i class="ph ph-cloud-rain" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">12°</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Sam<i class="ph ph-cloud" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">13°</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:3px">Dim<i class="ph ph-sun" style="font-size:20px;color:var(--color-neutral-200)"></i><span style="color:var(--color-text)">16°</span></div></div>
+</div>
+</div>
+<div style="position:absolute;left:56px;bottom:40px;display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);background:color-mix(in oklch,var(--color-surface) 70%,transparent);backdrop-filter:blur(16px);border:1px solid var(--color-neutral-800);box-shadow:var(--shadow-lg)">
+<div style="width:128px;height:72px;border-radius:var(--radius-md);background:#FF0033;display:flex;align-items:center;justify-content:center;gap:6px;font:600 16px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);transform:scale(1.08);box-shadow:0 0 0 2px var(--color-surface),0 0 0 4px var(--color-accent-200),0 0 30px color-mix(in oklch,var(--color-accent) 40%,transparent)"><i class="ph ph-youtube-logo" style="font-size:22px"></i>YouTube</div>
+<div style="width:128px;height:72px;border-radius:var(--radius-md);background:linear-gradient(135deg,#0c1033,#23145a);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--color-neutral-100);transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 2px var(--color-surface),0 0 0 4px var(--color-accent-200)"><span style="font-size:8px;letter-spacing:0.18em;opacity:.7">RTBF</span><span style="font:600 19px var(--font-body);letter-spacing:-0.03em">auvio</span></div>
+<div style="width:128px;height:72px;border-radius:var(--radius-md);background:#F47521;display:flex;align-items:center;justify-content:center;font:600 16px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 2px var(--color-surface),0 0 0 4px var(--color-accent-200)">crunchyroll</div>
+<div style="width:128px;height:72px;border-radius:var(--radius-md);background:#0F171E;display:flex;align-items:center;justify-content:center;font:600 16px var(--font-body);letter-spacing:-0.03em;color:#1A98FF;transition:transform .15s" style-hover="transform:scale(1.08);box-shadow:0 0 0 2px var(--color-surface),0 0 0 4px var(--color-accent-200)">prime video</div>
+<div style="width:1px;height:44px;background:var(--color-neutral-700);margin:0 4px"></div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-squares-four" style="font-size:24px"></i>Apps</div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-plugs" style="font-size:24px"></i>Sources</div>
+<div style="width:64px;height:72px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-gear-six" style="font-size:24px"></i>Réglages</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a><span><b>Favoris + toutes les apps</b> (<a class="dv-oid" href="#1d">1d</a>). Les apps sous les favoris sont des exemples, à remplacer par les vôtres.</span></div>
+<div class="dv-card" style="width:960px;height:540px;position:relative;background:linear-gradient(180deg,var(--color-neutral-900),var(--color-bg) 50%);padding:30px 56px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;gap:20px"><span style="font-size:22px;font-weight:500">20:41</span><span style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--color-neutral-400)"><i class="ph ph-cloud-sun" style="font-size:22px;color:var(--color-accent-300)"></i><span style="color:var(--color-text);font-size:16px">14°</span>Bruxelles</span></div>
+<div style="display:flex;gap:8px;font-size:20px;color:var(--color-neutral-400)"><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-magnifying-glass"></i></div><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-plugs"></i></div><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center" style-hover="background:var(--color-neutral-800);color:var(--color-text)"><i class="ph ph-gear-six"></i></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+<div style="aspect-ratio:16/9;border-radius:var(--radius-md);background:#FF0033;display:flex;align-items:center;justify-content:center;gap:8px;font:600 22px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);transform:scale(1.05);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200),0 18px 40px rgba(0,0,0,.55),0 0 40px color-mix(in oklch,var(--color-accent) 40%,transparent)"><i class="ph ph-youtube-logo" style="font-size:30px"></i>YouTube</div>
+<div style="aspect-ratio:16/9;border-radius:var(--radius-md);background:linear-gradient(135deg,#0c1033,#23145a);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--color-neutral-100);box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.05);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200)"><span style="font-size:10px;letter-spacing:0.18em;opacity:.7">RTBF</span><span style="font:600 26px var(--font-body);letter-spacing:-0.03em">auvio</span></div>
+<div style="aspect-ratio:16/9;border-radius:var(--radius-md);background:#F47521;display:flex;align-items:center;justify-content:center;font:600 21px var(--font-body);letter-spacing:-0.03em;color:var(--color-neutral-100);box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.05);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200)">crunchyroll</div>
+<div style="aspect-ratio:16/9;border-radius:var(--radius-md);background:#0F171E;border:1px solid #1c2a36;display:flex;align-items:center;justify-content:center;font:600 22px var(--font-body);letter-spacing:-0.03em;color:#1A98FF;box-shadow:var(--shadow-md);transition:transform .15s" style-hover="transform:scale(1.05);box-shadow:0 0 0 3px var(--color-bg),0 0 0 5px var(--color-accent-200)">prime video</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-500)">Toutes les apps</span><span style="font-size:12px;color:var(--color-neutral-600)">A–Z · ≡ pour épingler</span></div>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:12px">
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-globe" style="font-size:24px"></i>Navigateur</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-star" style="font-size:24px"></i>Disney+</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-folder" style="font-size:24px"></i>Fichiers</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-film-strip" style="font-size:24px"></i>Netflix</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-google-play-logo" style="font-size:24px"></i>Play Store</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-spotify-logo" style="font-size:24px"></i>Spotify</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-twitch-logo" style="font-size:24px"></i>Twitch</div>
+<div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)" style-hover="border-color:var(--color-accent);color:var(--color-text);transform:scale(1.06)"><i class="ph ph-play-circle" style="font-size:24px"></i>VLC</div>
+</div>
+<div style="height:24px;border-radius:var(--radius-md);background:linear-gradient(180deg,var(--color-surface),transparent);opacity:.5"></div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Essayez : « rends <a class="dv-oid" href="#2a">2a</a> navigable avec les flèches » · « mets le widget météo de <a class="dv-oid" href="#2b">2b</a> dans <a class="dv-oid" href="#2c">2c</a> » · « remplace les tuiles par les vrais logos »</p>
+</section>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Écran d'accueil — 5 approches (focus = contour violet)</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a><span><b>Une seule rangée.</b> 4 favoris + « Toutes les apps ». Rien d'autre. Le focus démarre sur YouTube.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:radial-gradient(120% 90% at 20% 0%, var(--color-surface), var(--color-bg) 70%)">
+<div style="position:absolute;top:28px;left:40px;right:40px;display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--color-neutral-400)">
+<div style="display:flex;align-items:center;gap:16px"><span style="font-size:18px;color:var(--color-text)">20:41</span><div style="display:flex;align-items:center;gap:8px;padding:4px 10px;border:1px solid var(--color-neutral-800);border-radius:var(--radius-md);font-size:13px"><i class="ph ph-cloud-sun" style="font-size:18px;color:var(--color-accent-300)"></i><span style="color:var(--color-text)">14°</span><span>Bruxelles · averses 17h</span></div></div>
+<div style="display:flex;gap:18px;font-size:20px"><i class="ph ph-plugs"></i><i class="ph ph-wifi-high"></i><i class="ph ph-gear-six"></i></div>
+</div>
+<div style="position:absolute;left:40px;right:40px;top:150px;display:flex;gap:16px">
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:116px;height:72px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-accent);box-shadow:0 0 0 2px var(--color-accent),0 0 28px color-mix(in oklch,var(--color-accent) 45%,transparent);display:flex;align-items:center;justify-content:center;font-size:14px;transform:scale(1.06)">YouTube</div><span style="font-size:12px;color:var(--color-text);padding-left:2px">YouTube</span></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:116px;height:72px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Auvio</div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:116px;height:72px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Crunchyroll</div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:116px;height:72px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Prime Video</div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:116px;height:72px;border-radius:var(--radius-md);border:1px dashed var(--color-neutral-700);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;color:var(--color-neutral-400)"><i class="ph ph-squares-four" style="font-size:20px"></i>Toutes les apps</div></div>
+</div>
+<div style="position:absolute;left:40px;bottom:28px;font-size:11px;color:var(--color-neutral-600)">◀ ▶ naviguer · OK ouvrir · appui long = réorganiser</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a><span><b>Dock bas.</b> Écran calme (heure, date) ; favoris dans un dock, puis Apps / Sources / Réglages après un séparateur.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:linear-gradient(180deg, var(--color-bg), var(--color-surface))">
+<div style="position:absolute;left:48px;top:96px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:64px;font-weight:300;letter-spacing:-0.02em;line-height:1">20:41</span>
+<span style="font-size:15px;color:var(--color-neutral-400)">Jeudi 22 octobre</span>
+<div style="display:flex;align-items:center;gap:18px;margin-top:18px;padding:10px 14px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--color-neutral-900) 70%,transparent);border:1px solid var(--color-neutral-800)"><div style="display:flex;align-items:center;gap:8px"><i class="ph ph-cloud-sun" style="font-size:26px;color:var(--color-accent-300)"></i><div style="display:flex;flex-direction:column"><span style="font-size:20px;line-height:1">14°</span><span style="font-size:10px;color:var(--color-neutral-500)">Bruxelles</span></div></div><div style="width:1px;height:28px;background:var(--color-neutral-800)"></div><div style="display:flex;gap:14px;font-size:10px;color:var(--color-neutral-500)"><div style="display:flex;flex-direction:column;align-items:center;gap:2px">Ven<i class="ph ph-cloud-rain" style="font-size:16px;color:var(--color-neutral-300)"></i>12°</div><div style="display:flex;flex-direction:column;align-items:center;gap:2px">Sam<i class="ph ph-cloud" style="font-size:16px;color:var(--color-neutral-300)"></i>13°</div><div style="display:flex;flex-direction:column;align-items:center;gap:2px">Dim<i class="ph ph-sun" style="font-size:16px;color:var(--color-neutral-300)"></i>16°</div></div></div>
+</div>
+<div style="position:absolute;left:48px;bottom:32px;display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--radius-lg);background:color-mix(in oklch,var(--color-neutral-900) 80%,transparent);border:1px solid var(--color-neutral-800)">
+<div style="width:92px;height:56px;border-radius:var(--radius-md);background:var(--color-neutral-800);border:1px solid var(--color-accent);box-shadow:0 0 0 2px var(--color-accent),0 0 24px color-mix(in oklch,var(--color-accent) 45%,transparent);display:flex;align-items:center;justify-content:center;font-size:12px">YouTube</div>
+<div style="width:92px;height:56px;border-radius:var(--radius-md);background:var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-neutral-300)">Auvio</div>
+<div style="width:92px;height:56px;border-radius:var(--radius-md);background:var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-neutral-300)">Crunchyroll</div>
+<div style="width:92px;height:56px;border-radius:var(--radius-md);background:var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-neutral-300)">Prime Video</div>
+<div style="width:1px;height:36px;background:var(--color-neutral-700);margin:0 6px"></div>
+<div style="width:56px;height:56px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:var(--color-neutral-400)"><i class="ph ph-squares-four" style="font-size:20px"></i>Apps</div>
+<div style="width:56px;height:56px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:var(--color-neutral-400)"><i class="ph ph-plugs" style="font-size:20px"></i>Sources</div>
+<div style="width:56px;height:56px;border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:var(--color-neutral-400)"><i class="ph ph-gear-six" style="font-size:20px"></i>Réglages</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a><span><b>Liste texte.</b> Favoris en grande typo à gauche, vignette de l'app sélectionnée à droite. Lisible de loin, zéro chargement d'images.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:var(--color-bg);display:grid;grid-template-columns:300px 1fr">
+<div style="padding:44px 0 0 44px;display:flex;flex-direction:column;gap:4px">
+<span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:10px">Favoris</span>
+<div style="display:flex;align-items:center;gap:12px;font-size:26px;color:var(--color-text)"><span style="width:3px;height:26px;background:var(--color-accent);border-radius:2px"></span>YouTube</div>
+<div style="padding-left:15px;font-size:26px;color:var(--color-neutral-500)">RTBF Auvio</div>
+<div style="padding-left:15px;font-size:26px;color:var(--color-neutral-500)">Crunchyroll</div>
+<div style="padding-left:15px;font-size:26px;color:var(--color-neutral-500)">Prime Video</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:26px;padding-left:15px;font-size:14px;color:var(--color-neutral-500)">
+<span style="display:flex;gap:8px;align-items:center"><i class="ph ph-squares-four"></i>Toutes les apps</span>
+<span style="display:flex;gap:8px;align-items:center"><i class="ph ph-plugs"></i>Sources</span>
+<span style="display:flex;gap:8px;align-items:center"><i class="ph ph-gear-six"></i>Réglages</span>
+</div>
+</div>
+<div style="padding:44px 44px 44px 0;display:flex;flex-direction:column;gap:12px">
+<div style="flex:1;border-radius:var(--radius-lg);background:radial-gradient(100% 100% at 30% 20%, var(--color-neutral-800), var(--color-neutral-900));border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;color:var(--color-neutral-500);font-size:13px">Logo / visuel YouTube</div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--color-neutral-500)"><span>20:41 · OK pour ouvrir</span><span style="display:flex;align-items:center;gap:6px"><i class="ph ph-cloud-sun" style="font-size:16px;color:var(--color-accent-300)"></i><span style="color:var(--color-text)">14°</span>Bruxelles</span></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a><span><b>Favoris + toutes les apps sur le même écran.</b> Grands favoris en haut, grille A–Z compacte en dessous (▼ pour descendre). Aucun sous-menu.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:linear-gradient(180deg, var(--color-surface), var(--color-bg) 55%);padding:26px 36px;box-sizing:border-box;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--color-neutral-400)"><div style="display:flex;align-items:center;gap:14px"><span style="color:var(--color-text)">20:41</span><span style="display:flex;align-items:center;gap:6px"><i class="ph ph-cloud-sun" style="font-size:17px;color:var(--color-accent-300)"></i><span style="color:var(--color-text)">14°</span>Bruxelles</span></div><div style="display:flex;gap:16px;font-size:18px"><i class="ph ph-magnifying-glass"></i><i class="ph ph-plugs"></i><i class="ph ph-gear-six"></i></div></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+<div style="height:86px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-accent);box-shadow:0 0 0 2px var(--color-accent),0 0 24px color-mix(in oklch,var(--color-accent) 45%,transparent);display:flex;align-items:center;justify-content:center;font-size:14px">YouTube</div>
+<div style="height:86px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Auvio</div>
+<div style="height:86px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Crunchyroll</div>
+<div style="height:86px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-neutral-300)">Prime Video</div>
+</div>
+<span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-600)">Toutes les apps · A–Z</span>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:10px">
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-400)">App</div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+<div style="height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);opacity:0.5"></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a><span><b>Croix télécommande.</b> Chaque favori = une direction (▲▼◀▶) puis OK. Deux pressions max pour n'importe quel favori ; OK au centre = toutes les apps.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:radial-gradient(70% 80% at 50% 50%, var(--color-surface), var(--color-bg))">
+<div style="position:absolute;top:24px;left:32px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--color-neutral-400)"><span>20:41</span><span style="display:flex;align-items:center;gap:6px;font-size:13px"><i class="ph ph-cloud-sun" style="font-size:18px;color:var(--color-accent-300)"></i><span style="color:var(--color-text)">14°</span>Bruxelles</span></div>
+<div style="position:absolute;top:24px;right:32px;display:flex;gap:16px;font-size:18px;color:var(--color-neutral-500)"><i class="ph ph-plugs"></i><i class="ph ph-gear-six"></i></div>
+<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;grid-template-columns:150px 110px 150px;grid-template-rows:80px 110px 80px;gap:12px;align-items:center;justify-items:center">
+<div></div>
+<div style="width:150px;height:80px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-accent);box-shadow:0 0 0 2px var(--color-accent),0 0 24px color-mix(in oklch,var(--color-accent) 45%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:14px"><span style="font-size:10px;color:var(--color-accent-300)">▲</span>YouTube</div>
+<div></div>
+<div style="width:150px;height:80px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:14px;color:var(--color-neutral-300)"><span style="font-size:10px;color:var(--color-neutral-600)">◀</span>Auvio</div>
+<div style="width:96px;height:96px;border-radius:50%;border:1px dashed var(--color-neutral-700);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--color-neutral-400)"><i class="ph ph-squares-four" style="font-size:22px"></i>Apps</div>
+<div style="width:150px;height:80px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:14px;color:var(--color-neutral-300)"><span style="font-size:10px;color:var(--color-neutral-600)">▶</span>Crunchyroll</div>
+<div></div>
+<div style="width:150px;height:80px;border-radius:var(--radius-md);background:var(--color-neutral-900);border:1px solid var(--color-neutral-800);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:14px;color:var(--color-neutral-300)"><span style="font-size:10px;color:var(--color-neutral-600)">▼</span>Prime Video</div>
+<div></div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1f">
+<div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a><span><b>Écran « Toutes les apps »</b> (commun à toutes les options). Recherche par lettre, favoris épinglés en tête, ★ pour ajouter/retirer.</span></div>
+<div class="dv-card" style="width:720px;height:405px;position:relative;background:var(--color-bg);display:grid;grid-template-columns:44px 1fr;gap:20px;padding:28px 36px 28px 24px;box-sizing:border-box">
+<div style="display:flex;flex-direction:column;gap:3px;font-size:10px;color:var(--color-neutral-600);align-items:center;padding-top:30px">
+<span style="color:var(--color-accent-300)">★</span><span style="color:var(--color-text);background:var(--color-neutral-800);border-radius:4px;padding:1px 5px">A</span><span>C</span><span>D</span><span>F</span><span>G</span><span>K</span><span>N</span><span>P</span><span>S</span><span>T</span><span>V</span><span>Y</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:20px;font-weight:500">Toutes les apps</span><div style="display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--color-neutral-800);border-radius:var(--radius-md);font-size:12px;color:var(--color-neutral-500);width:180px"><i class="ph ph-magnifying-glass"></i>Rechercher</div></div>
+<div style="display:flex;gap:10px">
+<div style="flex:1;height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);border:1px solid var(--color-accent-700);display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)"><span style="color:var(--color-accent-300)">★</span>YouTube</div>
+<div style="flex:1;height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);border:1px solid var(--color-accent-700);display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)"><span style="color:var(--color-accent-300)">★</span>Auvio</div>
+<div style="flex:1;height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);border:1px solid var(--color-accent-700);display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)"><span style="color:var(--color-accent-300)">★</span>Crunchyroll</div>
+<div style="flex:1;height:44px;border-radius:var(--radius-sm);background:var(--color-neutral-900);border:1px solid var(--color-accent-700);display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--color-neutral-300)"><span style="color:var(--color-accent-300)">★</span>Prime Video</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);border:1px solid var(--color-accent);box-shadow:0 0 0 2px var(--color-accent);display:flex;align-items:center;justify-content:center;font-size:10px">App A</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+<div style="height:58px;border-radius:var(--radius-sm);background:var(--color-neutral-900);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-neutral-500)">App</div>
+</div>
+<span style="font-size:11px;color:var(--color-neutral-600)">Menu ≡ sur une app : ★ épingler · déplacer · masquer</span>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Essayez : « développe <a class="dv-oid" href="#1a">1a</a> en haute fidélité » · « mélange <a class="dv-oid" href="#1b">1b</a> et <a class="dv-oid" href="#1d">1d</a> » · « rends <a class="dv-oid" href="#1e">1e</a> navigable avec les flèches du clavier »</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { wp: 0, focus: null, bgApp: null, launch: null, phase: 0, edit: false, vok: {} };
+  vids = ['youtube', 'auvio', 'crunchyroll', 'prime'];
+  componentDidUpdate(pp, ps) {
+    if (ps.bgApp === this.state.bgApp && ps.edit === this.state.edit) return;
+    document.querySelectorAll('video[data-tv-anim]').forEach(v => {
+      const i = +v.getAttribute('data-tv-anim');
+      v.muted = true;
+      if (this.state.edit || i !== this.state.bgApp) v.pause();
+      else { v.currentTime = 0; v.play().catch(() => {}); }
+    });
+  }
+  apps = [
+    { label: 'YouTube', kicker: '', bg: '#FF0033', fg: '#f3f5fe' },
+    { label: 'auvio', kicker: 'RTBF', bg: 'linear-gradient(135deg,#0c1033,#23145a)', fg: '#f3f5fe' },
+    { label: 'crunchyroll', kicker: '', bg: '#F47521', fg: '#f3f5fe' },
+    { label: 'prime video', kicker: '', bg: '#0F171E', fg: '#1A98FF' }
+  ];
+  componentDidMount() {
+    this.iv = setInterval(() => {
+      if (this.state.bgApp == null && !this.state.edit) this.setState(s => ({ wp: (s.wp + 1) % 4 }));
+    }, 7000);
+    this.kd = e => {
+      if (this.state.edit) return;
+      const k = e.key;
+      if (k === 'ArrowRight' || k === 'ArrowLeft') {
+        e.preventDefault();
+        const cur = this.state.focus;
+        const f = cur == null ? 0 : Math.max(0, Math.min(3, cur + (k === 'ArrowRight' ? 1 : -1)));
+        this.setFocus(f);
+      } else if (k === 'Enter' && this.state.focus != null) this.launch(this.state.focus);
+      else if (k === 'Escape') this.setFocus(null);
+    };
+    window.addEventListener('keydown', this.kd);
+  }
+  componentWillUnmount() {
+    clearInterval(this.iv); clearTimeout(this.ft); clearTimeout(this.lt); clearTimeout(this.lt2);
+    window.removeEventListener('keydown', this.kd);
+  }
+  setFocus(f) {
+    if (this.state.launch != null) return;
+    clearTimeout(this.ft);
+    if (f == null) this.setState({ focus: null, bgApp: null });
+    else { this.setState({ focus: f }); this.ft = setTimeout(() => this.setState({ bgApp: f }), 450); }
+  }
+  launch(i) {
+    clearTimeout(this.ft); clearTimeout(this.lt); clearTimeout(this.lt2);
+    this.setState({ launch: i, phase: 0, focus: i, bgApp: i });
+    requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ phase: 1 })));
+    this.lt = setTimeout(() => this.setState({ phase: 2 }), 1500);
+    this.lt2 = setTimeout(() => this.setState({ launch: null, phase: 0 }), 2000);
+  }
+  renderVals() {
+    const { wp, focus, bgApp, launch, phase, edit } = this.state;
+    const cw = 211, ch = 200;
+    const layers = [0, 1, 2, 3, 4, 5, 6, 7].map(n => {
+      const isApp = n >= 4, i = n % 4, a = this.apps[i];
+      const o = edit ? 1 : isApp ? (bgApp === i ? 1 : 0) : (bgApp == null && wp === i ? 1 : 0);
+      return {
+        id: isApp ? 'tv-app-' + ['youtube', 'auvio', 'crunchyroll', 'prime'][i] : 'tv-photo-' + (i + 1),
+        ph: isApp ? 'Visuel / GIF ' + (a.kicker ? 'Auvio' : a.label) : 'Photo TV ' + (i + 1),
+        label: isApp ? (a.kicker ? 'RTBF Auvio' : a.label) : 'Photo ' + (i + 1),
+        left: edit ? (40 + i * (cw + 12)) + 'px' : '0px',
+        top: edit ? (56 + (isApp ? 1 : 0) * (ch + 12)) + 'px' : '0px',
+        w: edit ? cw + 'px' : '100%', h: edit ? ch + 'px' : '100%',
+        r: edit ? '8px' : '0px', o, pe: edit ? 'auto' : 'none', lo: edit ? 1 : 0,
+        anim: edit || isApp ? 'none' : 'kb 16s ease-in-out infinite alternate',
+        isApp, vi: String(i), vsrc: 'anim/' + this.vids[i] + '.mp4',
+        vd: isApp && this.state.vok[i] ? 'block' : 'none',
+        vok: () => this.setState(s => ({ vok: { ...s.vok, [i]: true } })),
+        verr: () => this.setState(s => ({ vok: { ...s.vok, [i]: false } }))
+      };
+    });
+    const tiles = this.apps.map((a, i) => ({
+      ...a,
+      scale: focus === i ? 'scale(1.1)' : 'scale(1)',
+      ring: focus === i ? '0 0 0 2px var(--color-surface),0 0 0 4px var(--color-accent-200),0 0 30px color-mix(in oklch,var(--color-accent) 40%,transparent)' : 'none',
+      enter: () => this.setFocus(i),
+      open: () => this.launch(i)
+    }));
+    const la = launch != null ? this.apps[launch] : this.apps[0];
+    return {
+      layers, tiles, edit,
+      dots: [0, 1, 2, 3].map(i => ({ w: wp === i && bgApp == null ? '20px' : '6px', c: wp === i && bgApp == null ? 'var(--color-text)' : 'var(--color-neutral-600)' })),
+      uiOp: edit ? 0 : 1, uiPe: edit ? 'none' : 'auto',
+      lOp: launch != null && phase < 2 ? 1 : 0,
+      lScale: phase === 0 ? 'scale(1)' : phase === 1 ? 'scale(3)' : 'scale(3.4)',
+      lL: phase === 0 ? (69 + (launch ?? 0) * 140) + 'px' : '0px', lT: phase === 0 ? '415px' : '0px',
+      lW: phase === 0 ? '128px' : '960px', lH: phase === 0 ? '72px' : '540px', lR: phase === 0 ? '8px' : '0px',
+      lTr: phase === 0 ? 'none' : 'all .65s cubic-bezier(.3,0,.1,1)',
+      uiFilter: launch != null ? 'blur(10px) brightness(.6)' : 'none', uiScale: launch != null ? 'scale(.96)' : 'scale(1)',
+      lBg: la.bg, lFg: la.fg, lLabel: la.label, lKicker: la.kicker,
+      editLabel: edit ? 'Terminer' : 'Ajouter les images',
+      toggleEdit: () => this.setState(s => ({ edit: !s.edit, focus: null, bgApp: null })),
+      clearFocus: () => this.setFocus(null)
+    };
+  }
+}
+</script>
+</body>
+</html>
